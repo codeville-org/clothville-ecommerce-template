@@ -1,18 +1,30 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { Container } from "@/components/common/container";
 import { SocialIcon } from "@/components/icons/social-icons";
+import { NewsletterForm } from "@/components/marketing/newsletter-form";
 
-/**
- * PHASE 1 PLACEHOLDER FOOTER.
- * Link columns + socials + legal, driven entirely by siteConfig. The styled
- * newsletter form and richer layout arrive in Phase 2.
- */
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-card text-card-foreground">
-      <div className="mx-auto max-w-editorial px-4 py-14 sm:px-6">
+      {siteConfig.features.newsletter && (
+        <div className="border-b border-border">
+          <Container className="grid gap-6 py-14 md:grid-cols-2 md:items-center">
+            <div>
+              <h2 className="font-serif text-2xl sm:text-3xl">Join the atelier</h2>
+              <p className="mt-2 max-w-md text-sm text-muted-foreground">
+                Be first to receive new collections, private previews and editorial stories.
+              </p>
+            </div>
+            <div className="md:justify-self-end">
+              <NewsletterForm />
+            </div>
+          </Container>
+        </div>
+      )}
+
+      <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_repeat(3,1fr)]">
-          {/* Brand */}
           <div>
             <p className="font-serif text-2xl tracking-[0.3em]">{siteConfig.logo.text}</p>
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">{siteConfig.tagline}</p>
@@ -32,7 +44,6 @@ export function SiteFooter() {
             </div>
           </div>
 
-          {/* Link columns */}
           {siteConfig.footer.columns.map((column) => (
             <nav key={column.heading} aria-label={column.heading}>
               <h2 className="font-sans text-xs uppercase tracking-[0.2em] text-muted-foreground">
@@ -41,7 +52,7 @@ export function SiteFooter() {
               <ul className="mt-4 space-y-2.5 text-sm">
                 {column.links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-foreground/80 hover:text-foreground">
+                    <Link href={link.href} className="text-foreground/80 transition-colors hover:text-foreground">
                       {link.label}
                     </Link>
                   </li>
@@ -58,14 +69,14 @@ export function SiteFooter() {
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {siteConfig.footer.legalLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="hover:text-foreground">
+                <Link href={link.href} className="transition-colors hover:text-foreground">
                   {link.label}
                 </Link>
               </li>
             ))}
           </ul>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

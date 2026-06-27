@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img" aria-label="Clothville demo image">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#CDAB78"/>
+      <stop offset="1" stop-color="#B08A50"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#g)"/>
+  <rect x="48" y="48" width="704" height="904" fill="none" stroke="#2A1E10" stroke-opacity="0.22"/>
+  <text x="400" y="496" text-anchor="middle" font-family="Georgia, &apos;Times New Roman&apos;, serif" font-size="44" letter-spacing="12" fill="#2A1E10" fill-opacity="0.62">CLOTHVILLE</text>
+  <line x1="332" y1="524" x2="468" y2="524" stroke="#2A1E10" stroke-opacity="0.4"/>
+  <text x="400" y="556" text-anchor="middle" font-family="Georgia, serif" font-size="15" letter-spacing="7" fill="#2A1E10" fill-opacity="0.5">DEMO · CAMEL</text>
+</svg>

@@ -66,6 +66,75 @@
 
   /* Motion */
   --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Overlay / menu animations (data-state driven on Radix primitives) */
+  --animate-fade-in: fade-in 200ms var(--ease-luxe);
+  --animate-fade-out: fade-out 150ms var(--ease-luxe);
+  --animate-zoom-in: zoom-in 200ms var(--ease-luxe);
+  --animate-zoom-out: zoom-out 150ms var(--ease-luxe);
+  --animate-slide-in-right: slide-in-right 320ms var(--ease-luxe);
+  --animate-slide-out-right: slide-out-right 260ms var(--ease-luxe);
+  --animate-slide-in-left: slide-in-left 320ms var(--ease-luxe);
+  --animate-slide-out-left: slide-out-left 260ms var(--ease-luxe);
+  --animate-slide-in-bottom: slide-in-bottom 340ms var(--ease-luxe);
+  --animate-slide-out-bottom: slide-out-bottom 260ms var(--ease-luxe);
+  --animate-accordion-down: accordion-down 240ms var(--ease-luxe);
+  --animate-accordion-up: accordion-up 200ms var(--ease-luxe);
+  --animate-marquee: marquee 32s linear infinite;
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes zoom-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes zoom-out {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.97); }
+}
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes slide-out-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+@keyframes slide-out-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+@keyframes slide-in-bottom {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+@keyframes slide-out-bottom {
+  from { transform: translateY(0); }
+  to { transform: translateY(100%); }
 }
 
 /* 3. LIGHT — editorial bone / warm near-black + muted brass accent. */

@@ -1,6 +1,7 @@
 "use client";
 
 import { create } from "zustand";
+import type { Product } from "@/lib/commerce";
 
 /**
  * Ephemeral UI state for overlays (cart drawer, mobile nav, search, quick
@@ -8,29 +9,25 @@ import { create } from "zustand";
  */
 interface UIState {
   cartDrawerOpen: boolean;
-  mobileNavOpen: boolean;
   searchOpen: boolean;
-  /** Product slug currently shown in the quick-view modal, or null. */
-  quickViewSlug: string | null;
+  /** Product currently shown in the quick-view modal, or null. */
+  quickViewProduct: Product | null;
 
   openCartDrawer: () => void;
   closeCartDrawer: () => void;
-  setMobileNavOpen: (open: boolean) => void;
   setSearchOpen: (open: boolean) => void;
-  openQuickView: (slug: string) => void;
+  openQuickView: (product: Product) => void;
   closeQuickView: () => void;
 }
 
 export const useUI = create<UIState>((set) => ({
   cartDrawerOpen: false,
-  mobileNavOpen: false,
   searchOpen: false,
-  quickViewSlug: null,
+  quickViewProduct: null,
 
   openCartDrawer: () => set({ cartDrawerOpen: true }),
   closeCartDrawer: () => set({ cartDrawerOpen: false }),
-  setMobileNavOpen: (open) => set({ mobileNavOpen: open }),
   setSearchOpen: (open) => set({ searchOpen: open }),
-  openQuickView: (slug) => set({ quickViewSlug: slug }),
-  closeQuickView: () => set({ quickViewSlug: null }),
+  openQuickView: (product) => set({ quickViewProduct: product }),
+  closeQuickView: () => set({ quickViewProduct: null }),
 }));
