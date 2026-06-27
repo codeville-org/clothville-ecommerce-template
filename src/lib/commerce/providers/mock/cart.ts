@@ -5,7 +5,7 @@ import { genId, readJSON, writeJSON, mockStorage } from "./storage";
 
 const CURRENCY = "USD";
 const TAX_RATE = 0.08;
-const cartKey = (cartId: string) => `cdv_cart_${cartId}`;
+const cartKey = (cartId: string) => `clv_cart_${cartId}`;
 
 /** variantId → its product + variant, for fast line construction. */
 const VARIANT_INDEX = new Map<string, { product: Product; variant: ProductVariant }>();

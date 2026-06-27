@@ -17,8 +17,8 @@ import { genId, readJSON, writeJSON, mockStorage } from "./storage";
  * methods with calls to its own auth/customer APIs.
  */
 
-const SESSION_KEY = "cdv_session";
-const ADDRESS_KEY = "cdv_addresses";
+const SESSION_KEY = "clv_session";
+const ADDRESS_KEY = "clv_addresses";
 
 export function getCurrentCustomer(): Customer | null {
   return readJSON<Customer | null>(SESSION_KEY, null);

@@ -41,21 +41,21 @@ export interface SocialLink {
 }
 
 export const siteConfig = {
-  name: "CODEVILLE",
-  shortName: "Codeville",
+  name: "CLOTHVILLE",
+  shortName: "Clothville",
   tagline: "Considered luxury, quietly made.",
   description:
-    "Codeville is a premium fashion house offering editorial, slow-made clothing — coats, knitwear, tailoring and silk, crafted to last beyond the season.",
+    "Clothville is a premium fashion house offering editorial, slow-made clothing — coats, knitwear, tailoring and silk, crafted to last beyond the season.",
   /** Used for absolute URLs in metadata, sitemap and structured data. */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://codeville.example.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://clothville.example.com",
   locale: "en-US",
   currency: "USD",
 
   /** Text logo by default; swap for an <Image> in the Logo component if desired. */
-  logo: { text: "CODEVILLE" },
+  logo: { text: "CLOTHVILLE" },
 
   contact: {
-    email: "atelier@codeville.example.com",
+    email: "atelier@clothville.example.com",
     phone: "+1 (212) 555-0100",
     address: "55 Mercer Street, New York, NY 10013",
   },
@@ -182,10 +182,10 @@ export const siteConfig = {
   },
 
   seo: {
-    titleTemplate: "%s — CODEVILLE",
-    defaultTitle: "CODEVILLE — Considered Luxury Clothing",
+    titleTemplate: "%s — CLOTHVILLE",
+    defaultTitle: "CLOTHVILLE — Considered Luxury Clothing",
     ogImage: "/og-default.jpg",
-    twitterHandle: "@codeville",
+    twitterHandle: "@clothville",
   },
 } as const;
 

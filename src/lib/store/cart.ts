@@ -88,7 +88,7 @@ export const useCart = create<CartState>()(
       },
     }),
     {
-      name: "cdv-cart",
+      name: "clv-cart",
       storage: createJSONStorage(() => localStorage),
       // Only the cart id is persisted; contents are re-fetched from the provider.
       partialize: (state) => ({ cartId: state.cartId }),

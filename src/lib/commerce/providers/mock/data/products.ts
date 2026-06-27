@@ -118,7 +118,7 @@ function buildProduct(seed: ProductSeed, index: number): Product {
       variants.push({
         id: `${id}-${slugify(color.name)}-${slugify(size)}`,
         title,
-        sku: `CDV-${seed.slug.slice(0, 6).toUpperCase()}-${slugify(color.name).slice(0, 3).toUpperCase()}-${slugify(size).toUpperCase()}`,
+        sku: `CLV-${seed.slug.slice(0, 6).toUpperCase()}-${slugify(color.name).slice(0, 3).toUpperCase()}-${slugify(size).toUpperCase()}`,
         selectedOptions,
         price: { amount: seed.price, currencyCode: CURRENCY },
         compareAtPrice: seed.compareAtPrice

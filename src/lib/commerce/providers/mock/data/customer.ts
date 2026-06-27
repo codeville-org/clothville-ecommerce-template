@@ -106,14 +106,14 @@ function buildOrder(
 }
 
 export const demoOrders: Order[] = [
-  buildOrder("ord_1024", "CDV-1024", "2026-05-30T14:22:00.000Z", "delivered", [
+  buildOrder("ord_1024", "CLV-1024", "2026-05-30T14:22:00.000Z", "delivered", [
     { slug: "atelier-wool-coat", variantIndex: 2, quantity: 1 },
     { slug: "cashmere-wrap-scarf", variantIndex: 0, quantity: 1 },
   ]),
-  buildOrder("ord_1031", "CDV-1031", "2026-06-14T09:05:00.000Z", "shipped", [
+  buildOrder("ord_1031", "CLV-1031", "2026-06-14T09:05:00.000Z", "shipped", [
     { slug: "cashmere-crewneck", variantIndex: 1, quantity: 2 },
   ]),
-  buildOrder("ord_1038", "CDV-1038", "2026-06-23T18:40:00.000Z", "processing", [
+  buildOrder("ord_1038", "CLV-1038", "2026-06-23T18:40:00.000Z", "processing", [
     { slug: "ivory-silk-slip-dress", variantIndex: 0, quantity: 1 },
     { slug: "leather-tote-bag", variantIndex: 0, quantity: 1 },
   ]),

@@ -42,7 +42,7 @@ export const useWishlist = create<WishlistState>()(
       },
     }),
     {
-      name: "cdv-wishlist",
+      name: "clv-wishlist",
       storage: createJSONStorage(() => localStorage),
     },
   ),
