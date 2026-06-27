@@ -1,26 +1,181 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * ─────────────────────────────────────────────────────────────────────────
+ *  CODEVILLE — LUXURY E-COMMERCE THEME
+ *  Single source of truth for the whole design system.
+ *  Re-theme the entire storefront by editing the tokens below — every
+ *  component and page reads from these CSS variables (never hardcoded values).
+ *
+ *  Structure:
+ *    1. @custom-variant   → make `dark:` utilities respond to the `.dark` class
+ *    2. @theme inline     → expose tokens to Tailwind as utilities (bg-*, text-*…)
+ *    3. :root             → LIGHT palette values
+ *    4. .dark             → DARK palette values
+ *    5. base layer        → element defaults (typography, focus, selection)
+ * ─────────────────────────────────────────────────────────────────────────
+ */
 
+/* 1. Class-based dark mode (driven by next-themes), not prefers-color-scheme. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 2. Token → utility bindings. `inline` lets utilities reference the raw
+ *    variables below, so flipping light/dark re-themes everything live. */
 @theme inline {
+  /* Surfaces & text */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  /* Lines & inputs */
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Actions */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  /* The single luxury accent (muted brass/gold by default) */
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* Status */
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
+  /* Type families (wired to next/font CSS variables in layout.tsx) */
+  --font-sans: var(--font-jost);
+  --font-serif: var(--font-playfair);
+
+  /* Radii — restrained, editorial (near-square) */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  /* Layout */
+  --spacing-gutter: 1.5rem;
+  --container-editorial: 90rem;
+
+  /* Motion */
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* 3. LIGHT — editorial bone / warm near-black + muted brass accent. */
+:root {
+  --background: #f8f6f1;
+  --foreground: #1b1815;
+
+  --card: #ffffff;
+  --card-foreground: #1b1815;
+
+  --muted: #efebe3;
+  --muted-foreground: #6b645b;
+
+  --border: #e3ddd2;
+  --input: #e3ddd2;
+  --ring: #9a7b4f;
+
+  --primary: #1b1815;
+  --primary-foreground: #f8f6f1;
+
+  --secondary: #efebe3;
+  --secondary-foreground: #1b1815;
+
+  --accent: #9a7b4f;
+  --accent-foreground: #ffffff;
+
+  --destructive: #8c2f2f;
+  --destructive-foreground: #f8f6f1;
+
+  --success: #3f6b4f;
+  --success-foreground: #f8f6f1;
+}
+
+/* 4. DARK — warm near-black / bone + brighter brass accent. */
+.dark {
+  --background: #0e0c0a;
+  --foreground: #ece7de;
+
+  --card: #16130f;
+  --card-foreground: #ece7de;
+
+  --muted: #1e1a15;
+  --muted-foreground: #a39a8c;
+
+  --border: #2a251f;
+  --input: #2a251f;
+  --ring: #b8965e;
+
+  --primary: #ece7de;
+  --primary-foreground: #16130f;
+
+  --secondary: #1e1a15;
+  --secondary-foreground: #ece7de;
+
+  --accent: #b8965e;
+  --accent-foreground: #16130f;
+
+  --destructive: #b5524f;
+  --destructive-foreground: #16130f;
+
+  --success: #6fa582;
+  --success-foreground: #16130f;
+}
+
+/* 5. Base element defaults. */
+@layer base {
+  * {
+    border-color: var(--color-border);
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Editorial display headings default to the serif; components can override. */
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+
+  /* Visible, on-brand focus ring for keyboard users. */
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
