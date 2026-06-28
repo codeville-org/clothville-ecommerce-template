@@ -33,6 +33,7 @@ export function DesktopNav() {
 
   return (
     <nav
+      aria-label="Primary"
       className="hidden md:block"
       onMouseLeave={scheduleClose}
       onKeyDown={(e) => {

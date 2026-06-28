@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Jost, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Providers } from "@/components/providers";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/json-ld";
 
 /** Editorial display serif for headings. */
 const playfair = Playfair_Display({
@@ -33,7 +34,6 @@ export const metadata: Metadata = {
     title: siteConfig.seo.defaultTitle,
     description: siteConfig.description,
     url: siteConfig.url,
-    images: [{ url: siteConfig.seo.ogImage }],
   },
   twitter: {
     card: "summary_large_image",
@@ -41,6 +41,13 @@ export const metadata: Metadata = {
     title: siteConfig.seo.defaultTitle,
     description: siteConfig.description,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f8f6f1" },
+    { media: "(prefers-color-scheme: dark)", color: "#0e0c0a" },
+  ],
 };
 
 export default function RootLayout({
@@ -65,6 +72,8 @@ export default function RootLayout({
             {children}
           </main>
           <SiteFooter />
+          <OrganizationJsonLd />
+          <WebSiteJsonLd />
         </Providers>
       </body>
     </html>
