@@ -4,8 +4,8 @@ import { siteConfig } from "@/config/site";
 import { Container } from "@/components/common/container";
 import { Reveal } from "@/components/common/reveal";
 import { SectionHeading } from "@/components/common/section-heading";
-import { Media } from "@/components/common/media";
 import { ProductGrid } from "@/components/product/product-grid";
+import { CollectionCard } from "@/components/shop/collection-card";
 
 /**
  * Home. Editorial hero, new-arrivals grid and featured collections — all read
@@ -71,23 +71,7 @@ export default async function HomePage() {
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {featured.map((collection, i) => (
               <Reveal key={collection.id} delay={i * 0.08}>
-                <Link
-                  href={`/collections/${collection.handle}`}
-                  className="group relative block aspect-[3/4] overflow-hidden bg-muted"
-                >
-                  {collection.image && (
-                    <Media
-                      image={collection.image}
-                      sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-                      className="transition-transform duration-700 ease-luxe group-hover:scale-105"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-linear-to-t from-foreground/55 via-foreground/10 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 text-background">
-                    <h3 className="font-serif text-2xl">{collection.title}</h3>
-                    <p className="mt-1 text-xs uppercase tracking-[0.18em]">Shop now</p>
-                  </div>
-                </Link>
+                <CollectionCard collection={collection} />
               </Reveal>
             ))}
           </div>

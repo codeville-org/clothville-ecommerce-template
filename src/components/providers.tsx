@@ -4,13 +4,15 @@ import { useEffect } from "react";
 import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
 import { Toaster } from "sonner";
 import { useCart } from "@/lib/store/cart";
+import { useAuth } from "@/lib/store/auth";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QuickView } from "@/components/product/quick-view";
 
-/** Loads the persisted cart once on mount. Renders nothing. */
-function CartInitializer() {
+/** Loads the persisted cart and auth session once on mount. Renders nothing. */
+function StoreInitializer() {
   useEffect(() => {
     void useCart.getState().init();
+    void useAuth.getState().init();
   }, []);
   return null;
 }
@@ -45,7 +47,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
     >
       <TooltipProvider delayDuration={200}>
         {children}
-        <CartInitializer />
+        <StoreInitializer />
         <QuickView />
         <ThemedToaster />
       </TooltipProvider>

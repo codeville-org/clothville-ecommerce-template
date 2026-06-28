@@ -24,6 +24,8 @@ interface CartState {
   removeItem: (lineId: string) => Promise<void>;
   applyDiscount: (code: string) => Promise<void>;
   removeDiscount: () => Promise<void>;
+  /** Empty the cart (e.g. after a completed checkout). */
+  clearCart: () => Promise<void>;
 }
 
 export const useCart = create<CartState>()(
@@ -85,6 +87,11 @@ export const useCart = create<CartState>()(
         if (!id) return;
         const cart = await commerce.removeDiscount(id);
         set({ cart });
+      },
+
+      async clearCart() {
+        const fresh = await commerce.createCart();
+        set({ cartId: fresh.id, cart: fresh });
       },
     }),
     {
